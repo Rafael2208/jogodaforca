@@ -3,28 +3,50 @@
 #include <string>
 #include <iostream>
 
+
+
 using namespace std;
 
-int main () {
- int opcao = 0
+void limpaTela (){
+ system ("CLS");
+}
+
+void menuInicial(){
+
+int opcao = 0;
+
+while(opcao < 1 || opcao >3){
+    limpaTela ();
+
 
  cout << "BEM VINDO AO JOGO";
  cout << "\n1 - JOGAR";
- count << "\n2 - SOBRE";
- count << "\n3 - SOBRE";
- count << "\nESCOLHA UMA OPCAO E TECLE - ENTER -";
+ cout << "\n2 - SOBRE";
+ cout << "\n3 - SAIR";
+ cout << "\nESCOLHA UMA OPCAO E TECLE - ENTER -";
 
  cin >> opcao;
 
- switch(opcao){
- case 1 :
-     break;
- case 2 :
-     break;
- case 3 :
-     break;
- }
+    switch(opcao){
+    case 1 :
+      cout << "JOGO INICIADO";
+    break;
+    case 2 :
+      cout << "INFORMACOES DO JOGO";
+    break;
+    case 3 :
+      cout << "ATE MAIS!!";
+    break;
+   }
 
- return 0;
+  }
 
 }
+
+int main(){
+
+  menuInicial();
+  return 0;
+
+}
+
