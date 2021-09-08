@@ -25,11 +25,29 @@ return palavras [indiceAleatorio];
 
 }
 
+string retornaPalavraComMascara(string palavra, int tamanhoDaPalavra){
+
+int  cont = 0;
+string palavraComMascara;
+
+while (cont < tamanhoDaPalavra){
+        palavraComMascara += "*";
+        cont++;
+   }
+   return palavraComMascara;
+}
+
 void jogarSozinho (){
 
-string palavra  = retornaPalavraAleatoria ();
-cout << "\nA PALAVRA SECRETA E:\n" << palavra;
+string palavra = retornaPalavraAleatoria ();
 
+int tamanhoDaPalavra = palavra.size();
+
+string palavraComMascara = retornaPalavraComMascara(palavra, tamanhoDaPalavra);
+
+
+    cout << "\nA PALAVRA SECRETA E FRUTA COM A LETRA A :\n" << palavra << "(Tamanho:" << tamanhoDaPalavra << ")\n";
+    cout << "\nMascara:" << palavraComMascara;
 }
 
 void menuInicial(){
@@ -50,7 +68,7 @@ while(opcao < 1 || opcao >3){
 
     switch(opcao){
     case 1 :
-      jogarSozinho (); //cout << "JOGO INICIADO";
+      jogarSozinho ();
     break;
     case 2 :
       cout << "INFORMACOES DO JOGO";
