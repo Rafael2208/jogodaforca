@@ -15,7 +15,7 @@ void limpaTela (){
 
 string retornaPalavraAleatoria (){
 
-string palavras [20] = {"Abacate","Abacaxi","Abiu","Abrico","Abrunho","Acai","Acerola","Akee","Alfarroba","Ameixa","Amendoa","Amora","Ananas","Anona","Araca","Arando","Araticum","Ata","Atemoia","Avela"};
+string palavras [20] = {"abacate","abacaxi","abiu","abrico","abrunho","acai","acerola","akee","alfarroba","ameixa","amendoa","amora","ananas","anona","araca","arando","araticum","ata","atemoia","avela"};
 
 int indiceAleatorio = rand() % 20;
 
@@ -37,6 +37,18 @@ while (cont < tamanhoDaPalavra){
    return palavraComMascara;
 }
 
+
+
+void exibeStatus(string palavraComMascara, int tamanhoDaPalavra, int tentativasRestantes, string letrasJaArriscadas){
+
+cout << "\nPALAVRA :\n" << palavraComMascara << "(Tamanho:" << tamanhoDaPalavra << ")\n";
+cout << "\nTENTATIVAS RESTANTES:" << tentativasRestantes;
+cout << "\nLETRAS ARRISCADAS:\n" << letrasJaArriscadas;
+
+}
+
+
+
 void jogarSozinho (){
 
 string palavra = retornaPalavraAleatoria ();
@@ -45,10 +57,49 @@ int tamanhoDaPalavra = palavra.size();
 
 string palavraComMascara = retornaPalavraComMascara(palavra, tamanhoDaPalavra);
 
+int tentativa = 0 ,maximoDeTentativas = 9;
+int cont = 0;
+char letra;
+string letrasJaArriscadas;
 
-    cout << "\nA PALAVRA SECRETA E FRUTA COM A LETRA A :\n" << palavra << "(Tamanho:" << tamanhoDaPalavra << ")\n";
-    cout << "\nMascara:" << palavraComMascara;
+
+
+while (palavra != palavraComMascara && maximoDeTentativas - tentativa > 0){
+
+
+    limpaTela ();
+
+    exibeStatus(palavraComMascara, tamanhoDaPalavra, maximoDeTentativas - tentativa, letrasJaArriscadas);
+
+    cout << "\nFRUTA COM A LETRA A *DIGITE UMA LETRA* \n";
+    cin >> letra;
+    letrasJaArriscadas += letra;
+
+    for (cont = 0; cont < tamanhoDaPalavra; cont++)
+    if (palavra[cont] == letra){
+
+        palavraComMascara[cont] = palavra[cont];
+    }
+
+    tentativa++;
+
+
 }
+
+
+if (palavra == palavraComMascara){
+    limpaTela ();
+    cout << "PARABENS VOCE GANHOU\n";
+} else {
+limpaTela ();
+    cout << "FIM DE JOGO\n";
+
+}
+
+
+}
+
+
 
 void menuInicial(){
 
@@ -81,6 +132,9 @@ while(opcao < 1 || opcao >3){
   }
 
 }
+
+
+
 
 int main(){
 
